@@ -1,0 +1,16 @@
+{
+  "name": "web-lib-binaryjson",
+  "version": "0.1.0",
+  "description": "Small library to Parse Qt Binary JSON files",
+  "main": "index.js",
+  "repository": "git@github.com:reMarkable/web-lib-binaryjson.git",
+  "author": "Henrik Hedlund <henrik.hedlund@remarkable.no>",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "jest": "^24.5.0"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
