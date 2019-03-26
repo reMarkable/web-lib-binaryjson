@@ -42,4 +42,4 @@ class Buffer {
   }
 }
 
-module.exports = Buffer;
+export default Buffer;

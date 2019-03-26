@@ -15,4 +15,4 @@ const parseHeader = buffer => {
   return [QBJS_TAG.length + 4, version];
 };
 
-module.exports = parseHeader;
+export default parseHeader;

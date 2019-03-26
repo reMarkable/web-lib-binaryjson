@@ -1,5 +1,5 @@
-const parseObject = require('./object');
-const parseArray = require('./array');
+import parseObject from './object';
+import parseArray  from './array';
 
 const parseVersion1 = buffer => {
   const header = buffer.peekInteger(4);
@@ -9,4 +9,4 @@ const parseVersion1 = buffer => {
   return parseArray(buffer);
 };
 
-module.exports = parseVersion1;
+export default parseVersion1;

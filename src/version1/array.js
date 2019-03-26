@@ -1,8 +1,9 @@
-const TYPES = require('./types');
-const parseString = require('./string');
-const parseObject = require('./object');
+import TYPES from './types';
+import parseString from './string';
+import parseObject from './object';
 
 const parseValue = (buffer, table) => {
+  const offset = buffer.offset;
   const header = table.readInteger();
   const type = header & 0x7;
   const latinOrIntValue = (header >> 3) & 0x1;
@@ -15,17 +16,16 @@ const parseValue = (buffer, table) => {
   switch (type) {
     case TYPES.Null: return null;
     case TYPES.Bool: return (value !== 0);
-    case TYPES.Double: return latinOrIntValue ? value : buffer.withOffset(value).readDouble();
-    case TYPES.String: parseString(buffer.withOffset(value), latinOrIntValue);
-    case TYPES.Array: parseArray(buffer.withOffset(value));
-    case TYPES.Object: parseObject(buffer.withOffset(value));
+    case TYPES.Double: return latinOrIntValue ? value : buffer.withOffset(offset + value).readDouble();
+    case TYPES.String: return parseString(buffer.withOffset(offset + value), latinOrIntValue);
+    case TYPES.Array: return parseArray(buffer.withOffset(offset + value));
+    case TYPES.Object: return parseObject(buffer.withOffset(offset + value));
 
     default:
       throw new Error(`Unknown array type ${type}`);
   }
 };
 
-//TODO: This one is probably completely broken!!!
 const parseArray = buffer => {
   const offset = buffer.offset;
   const bytes = buffer.readInteger();
@@ -45,4 +45,4 @@ const parseArray = buffer => {
   return results;
 };
 
-module.exports = parseArray;
+export default parseArray;

@@ -1,6 +1,6 @@
-const Buffer = require('./buffer');
-const parseHeader = require('./header');
-const parseVersion1 = require('./version1');
+import Buffer from './buffer';
+import parseHeader from './header';
+import parseVersion1 from './version1';
 
 const parse = buffer => {
   if (!buffer || buffer.length === 0) {
@@ -14,4 +14,4 @@ const parse = buffer => {
   throw new Error(`Unknown version ${version}`);
 };
 
-module.exports = parse;
+export default parse;

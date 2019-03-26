@@ -14,4 +14,4 @@ const parseString = (buffer, isLatin) => {
   return str;
 };
 
-module.exports = parseString;
+export default parseString;

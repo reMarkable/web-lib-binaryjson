@@ -1,6 +1,6 @@
-const TYPES = require('./types');
-const parseString = require('./string');
-const parseArray = require('./array');
+import TYPES from './types';
+import parseString from './string';
+import parseArray from './array';
 
 const parseKeyValue = buffer => {
   const header = buffer.readInteger();
@@ -21,7 +21,6 @@ const parseKeyValue = buffer => {
     case TYPES.String: return [key, parseString(buffer, latinOrIntValue)];
     case TYPES.Double: {
       if (latinOrIntValue) {
-        //TODO: I am not sure about this one AT ALL!
         return [key, value];
       }
       return [key, buffer.readDouble()];
@@ -54,4 +53,4 @@ const parseObject = buffer => {
   return results;
 };
 
-module.exports = parseObject;
+export default parseObject;

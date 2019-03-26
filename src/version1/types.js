@@ -8,4 +8,4 @@ const TYPES = {
   'undefined': 0x80
 };
 
-module.exports = TYPES;
+export default TYPES;
